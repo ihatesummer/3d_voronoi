@@ -23,8 +23,8 @@ ax.set_zlim(0, SPACE_LENGTH)
 count_closed = 0
 count_open = 0
 
-np.savetxt("points.csv", vor.points, delimiter=',')
-np.savetxt("voronoi_vertices.csv", vor.vertices, delimiter=',')
+np.savetxt("points.csv", vor.points, delimiter=',', fmt='%f')
+np.savetxt("voronoi_vertices.csv", vor.vertices, delimiter=',', fmt='%f')
 vor_dict = {str(key): value for key, value in vor.ridge_dict.items()}
 
 with open('voronoi_dict.json', 'w') as vd:
