@@ -248,14 +248,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   silicaParent: {fileID: 0}
-  vorParent: {fileID: 0}
+  voronoiParent: {fileID: 0}
   silicaPosFile: 
-  vorVertexPosFile: 
-  silicaCount: 0
-  vorVertexCount: 0
-  listXYZ_Silica: []
-  listXYZ_vorVertex: []
+  voronoiVertexPositionFile: 
+  voronoiDictFile: 
+  nSilica: 0
+  nVoronoiVertex: 0
+  nVoronoiSurface: 0
+  silicaLocations: []
+  voronoiVertexLocations: []
   m_vorVertex: {fileID: 2100000, guid: 23d21c7fd9e5aea47b8eb1f1badd0444, type: 2}
+  m_vorSurface: {fileID: 2100000, guid: 9b36034b1189d514e9458d52c96322c4, type: 2}
 --- !u!4 &521099279
 Transform:
   m_ObjectHideFlags: 0
@@ -335,7 +338,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -444,7 +447,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 50
   orthographic: 0
   orthographic size: 5
   m_Depth: -1

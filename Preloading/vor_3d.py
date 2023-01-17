@@ -8,9 +8,15 @@ SPACE_LENGTH = 10
 N_DIM = 3
 
 np.random.seed(0)
-dots = np.random.uniform(0, SPACE_LENGTH,
-                         (N_DOTS, N_DIM))
+dots = np.random.uniform(0, SPACE_LENGTH, (N_DOTS, N_DIM))
 vor = Voronoi(dots)
+
+np.savetxt("points.csv", vor.points, delimiter=',', fmt='%f')
+np.savetxt("voronoi_vertices.csv", vor.vertices, delimiter=',', fmt='%f')
+vor_dict = {str(key)[1:-1]: value for key, value in vor.ridge_dict.items()}
+
+with open('voronoi_dict.json', 'w') as vd:
+    json.dump(vor_dict, vd)
 
 fig = plt.figure()
 ax = fig.add_subplot(projection='3d')
@@ -19,16 +25,6 @@ plt.plot(vor.vertices[:, 0], vor.vertices[:, 1], vor.vertices[:, 2], 'ko', ms=2)
 ax.set_xlim(0, SPACE_LENGTH)
 ax.set_ylim(0, SPACE_LENGTH)
 ax.set_zlim(0, SPACE_LENGTH)
-
-count_closed = 0
-count_open = 0
-
-np.savetxt("points.csv", vor.points, delimiter=',', fmt='%f')
-np.savetxt("voronoi_vertices.csv", vor.vertices, delimiter=',', fmt='%f')
-vor_dict = {str(key): value for key, value in vor.ridge_dict.items()}
-
-with open('voronoi_dict.json', 'w') as vd:
-    json.dump(vor_dict, vd)
 
 for point_idx, vertice_idx in zip(vor.ridge_points, vor.ridge_vertices):
     vertice_idx = np.asarray(vertice_idx)
